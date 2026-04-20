@@ -52,11 +52,16 @@ def read_signals(main_folder):
                         fs = None
                 else:
                     df = pd.read_csv(file_path)
-                    fs = df.loc[0]
-                    fs = int(fs[0])
-                    df.drop([0], axis=0, inplace=True) 
-                    signal_array = df.values
-                    time_array = np.linspace(0, len(signal_array)/fs, len(signal_array))
+                    if df.empty:
+                        signal_array = []
+                        time_array = None
+                        fs = None
+                    else:
+                        fs_row = df.iloc[0]        
+                        fs = int(fs_row.iloc[0])
+                        df = df.iloc[1:]           
+                        signal_array = df.values
+                        time_array = np.linspace(0, len(signal_array)/fs, len(signal_array))
 
                 signal_name = file_name.split('.')[0]
                 signals[signal_name] = signal_array
