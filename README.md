@@ -1,5 +1,8 @@
 # CSE881-project
 
+Execute
+Just download the whole project and run Main.ipynb.
+
 Overview
 Classifies AEROBIC, ANAEROBIC, and STRESS states using Empatica E4 physiological signals (EDA, HR, TEMP, ACC) with machine learning.
 
